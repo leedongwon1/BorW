@@ -46,10 +46,10 @@
 </td>
 
 <td align="center">
-<a href="https://github.com/">
-<img src="https://avatars.githubusercontent.com/u/128127416?v=4" width="80" alt=""/>
+<a href="https://github.com/2-z-won">
+<img src="https://avatars.githubusercontent.com/u/148948672?v=4" width="80" alt=""/>
 <br />
-<sub><b>이지원</b></sub>
+<sub><b>2-z-won</b></sub>
 </a>
 <br />
 </td>
