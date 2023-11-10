@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>BoW KakaoMapAPI</title>
+    <link href="./images/bus.png" rel="shortcut icon" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- 지도를 표시할 div 입니다 -->
+    <div id="map" style="width: 900px; height: 700px"></div>
+
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f0e2fd01f44f692720699ade267c31f"
+    >
+    </script>
+
+
+
+    <script>
+      var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+        mapOption = {
+          center: new kakao.maps.LatLng(35.23323610827515, 129.0829675907476), // 지도의 중심좌표
+          level: 4, // 지도의 확대 레벨
+        };
+
+      // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+      var map = new kakao.maps.Map(mapContainer, mapOption);
