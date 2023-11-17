@@ -9,6 +9,10 @@
     <!-- 지도를 표시할 div 입니다 -->
     <div id="map" style="width: 900px; height: 700px"></div>
 
+    <h2>User Location Information</h2>
+    <p>Latitude: <span id="latitude"></span></p>
+    <p>Longitude: <span id="longitude"></span></p>
+    
     <script
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f0e2fd01f44f692720699ade267c31f"
@@ -369,6 +373,27 @@
         // 지도 중심좌표를 접속위치로 변경합니다
         map.setCenter(locPosition);
       }
+
+      function getLocation() {
+        if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(
+            function (myPosition) {
+              document.getElementById("latitude").textContent =
+                myPosition.coords.latitude;
+              document.getElementById("longitude").textContent =
+                myPosition.coords.longitude;
+            },
+            function (error) {
+              console.error(
+                "Error Code = " + error.code + " - " + error.message
+              );
+            }
+          );
+        } else {
+          console.log("Geolocation is not supported by this browser.");
+        }
+      }
+      
     </script>
   </body>
 </html>
