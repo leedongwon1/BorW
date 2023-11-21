@@ -45,6 +45,22 @@
         height: 600px; /* Arbitrary height for scrolling */
         scroll-snap-align: start;
       }
+
+      .logout-button {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .logout-button:hover {
+        background-color: #555;
+      }
     </style>
   </head>
   <body>
@@ -72,6 +88,8 @@
       <!-- 지도를 표시할 div 입니다 -->
       <div id="map" style="width: 900px; height: 700px" margin-left></div>
     </section>
+
+    <button class="logout-button" onclick="goToLoginPage()">로그아웃</button>
 
     <script
       type="text/javascript"
@@ -456,6 +474,14 @@
 
       // 페이지가 로드되면 위치 정보를 가져옵니다.
       window.onload = getLocation;
+
+      // 페이지가 로드되면 위치 정보를 가져옵니다.
+      window.onload = getLocation;
+
+      // 로그아웃 버튼 클릭 시 로그인 페이지로 이동하는 함수
+      function goToLoginPage() {
+        window.location.href = "login.html";
+      }
     </script>
   </body>
 </html>
