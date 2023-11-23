@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fixed Sidebar Navigation</title>
+    <style>
+      @font-face {
+        font-family: 'SF레몬빙수';
+        src: url('./SF레몬빙수.ttf');
+      }
+      /* SF레몬빙수-TTF 나는 이겨낸다 폰트를 사용할 요소에 적용 */
+      
+      @font-face {
+        font-family: 'NanumPen';
+        src: url('./NanumPen.ttf');
+      }
+      
+      body,
+      html,
+      th,
+      td {
+        text-align: center; /* 가운데 정렬 설정 */
+        font-family: 'SF레몬빙수', sans-serif;
+      }
+
+      body,
+      html {
+        padding: 0;
+        margin: 0;
+        scroll-behavior: smooth;
+      }
+      section h2{
+        font-family: 'SF레몬빙수', sans-serif;
+      }
+
+      section label{
+        font-family: 'NanumPen', sans-serif; 
+      }
+
+      nav {
+        font-family: 'SF레몬빙수', sans-serif;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 160px;
+        height: 100%;
+        background-color: #d2f0ef;
+        padding: 20px;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      nav ul li a {
+        font-size: 25px;
+        text-decoration: none;
+        color: #333;
+        display: block;
+        padding: 10px;
+        transition: background-color 0.3s;
+      }
+
+      nav ul li a:hover {
+        background-color: #B0E2ff;
+      }
+
+      section {
+        border-top: 4px solid #80DAEB; /* 상단 테두리 */
+        border-bottom: 4px solid #80DAEB; /* 하단 테두리 */
+        margin-left: 220px;
+        margin-right: 60px;
+        padding: 20px;
+        height: 830px; /* Arbitrary height for scrolling */
+        scroll-snap-align: start;
+      }
+      #map {
+        width: 100%;
+        height: 400px;
+      }table {
+        text-align: center; /* 가운데 정렬 설정 */
+        border-collapse: collapse;
+        width: 100%;
+        border-radius: 10px; /* 모서리를 둥글게 설정 */
+        overflow: hidden; /* 내용이 모서리를 넘어가지 않도록 설정 */
+      }
+
+      table, th, td {
+        border: 1px solid black;
+      }
+      th, td {
+        text-align: center; /* 가운데 정렬 설정 */
+        padding: 8px;
+        text-align: left;
+        border: 1px dotted #000; /* 점선으로 변경 */
+      }
+      th {
+        background-color: #d2f0ef; /* 민트색으로 변경 */
+      }
+      .marker {
+        content: "";
+        position: absolute;
+        bottom: 1.2rem;
+        left: 50%;
+        width: 0%;
+        height: 3px;
+        background-color: purple;
+        transition: 0.2s;
+      }
+
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  </head>
+  <body>
+    <nav>
+      <img src="./images/icon_BusOrWalk.png" alt="Project Icon" style="width: 100px; height: auto" />
+      <ul class="nav__menu">
+        <li><a href="#bow">BoW</a></li>
+        <li><a href="#time-table">Time Table</a></li>
+        <li><a href="#mappage">Map</a></li>
+      </ul>
+      <div class="marker"></div>
+    </nav>
+
+    
+    <section id="bow">
+      <h2>BoW</h2>
+      <p>Content for the BoW section goes here.</p>
+    </section>
+
+    <section id="time-table">
+      <h2>Time Table</h2>
+      <p>
+        <table id="locationTable">
+          <thead>
+              <tr>
+                  <th>Time</th>
+                  <th>Mon</th>
+                  <th>Tue</th>
+                  <th>Wed</th>
+                  <th>Thu</th>
+                  <th>Fri</th>
+                  <th>Sat</th>
+                  <th>Sun</th>
+              </tr>
+          </thead>
+          <tbody>
+      
+              <tr>
+                  <td>am 9:00</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+          
+      
+              </tr>
+              <tr>
+                  <td>am 10:00</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  
+              </tr>
+              <tr>
+                  <td>am 11:00</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  
+              </tr>
+              <tr>
+                  <td>pm 12:00</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>pm 1:00</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>pm 2:00</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>pm 3:00</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>pm 4:00</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>pm 5:00</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>pm 6:00</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>pm 7:00</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>pm 8:00</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>pm 9:00</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>pm 10:00</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>pm 11:00</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+            </tbody>
+          </table>
+      </p>
+    </section>
+
+    <section id="mappage">
+      <h2>Map</h2>
+      <!-- <p>Content for the Map section goes here.</p> -->
+      <!-- 지도를 표시할 div 입니다 -->
+      <label for="example">Choose an option:</label>
+    <input
+      list="options"
+      id="example"
+      name="example"
+      onblur="validateInput(this)"
+    />
+    <span id="error-message" style="color: red"></span>
+    <!-- 메시지 출력 위치 -->
+
+    <datalist id="options">
+      <option value="102 - 제1 부속공장"></option>
+      <option value="103 - 제12 공학관"></option>
+      <option value="105 - 제3 공학관(융합기계관)"></option>
+      <option value="106 - 효원문화회관"></option>
+      <option value="107 - 제8 공학관(항공관)"></option>
+      <option value="108 - 제9 공학관(기전관)"></option>
+      <option value="109 - 공과대학 공동실험관"></option>
+      <option value="110 - 에너지분야 실험실"></option>
+      <option value="111 - 실험폐기물처리장"></option>
+      <option value="201 - 제6 공학관(컴퓨터공학관)"></option>
+      <option value="202 - 운죽정"></option>
+      <option value="203 - 넉넉한터"></option>
+      <option value="204 - 넉넉한터 지하주차장"></option>
+      <option value="205 - 대학본부"></option>
+      <option value="206 - 제11 공학관(조선해양공학관)"></option>
+      <option value="207 - 제10 공학관(특성화공학관)"></option>
+      <option value="208 - 기계기술연구동"></option>
+      <option value="209 - 상남국제관"></option>
+      <option value="210 - 언어교육원"></option>
+      <option value="211 - 보육종합센터"></option>
+      <option value="301 - 구조실험동"></option>
+      <option value="302 - 토조실험동"></option>
+      <option value="303 - 기계관"></option>
+      <option value="306 - 인문관"></option>
+      <option value="307 - 인문대교수연구동"></option>
+      <option value="308 - 제1 물리관"></option>
+      <option value="309 - 제2 물리관"></option>
+      <option value="310 - 문창회관"></option>
+      <option value="311 - 공동연구기기동"></option>
+      <option value="312 - 공동실험실습관"></option>
+      <option value="313 - 자연대 연구실험동"></option>
+      <option value="314 - 정보화교육관"></option>
+      <option value="315 - 자유관 A동"></option>
+      <option value="316 - 자유관 B동"></option>
+      <option value="317 - 직장어린이집"></option>
+      <option value="318 - 자유주차장"></option>
+      <option value="401 - 건설관"></option>
+      <option value="402 - 정학관"></option>
+      <option value="405 - 제2 공학관(재료관)"></option>
+      <option value="406 - 제7 공학관(화공관)"></option>
+      <option value="407 - 선박예인수조연구동"></option>
+      <option value="408 - 제5 공학관(유기소재관)"></option>
+      <option value="409 - 교수회관"></option>
+      <option value="410 - 선박충격ㆍ피로ㆍ도장ㆍ시험연구동"></option>
+      <option value="411 - 자연과학관"></option>
+      <option value="412 - 박물관 A"></option>
+      <option value="413 - 박물관 B"></option>
+      <option value="414 - 지구관"></option>
+      <option value="415 - 샛벌회관"></option>
+      <option value="416 - 생물관"></option>
+      <option value="417 - 제1 사범관"></option>
+      <option value="418 - 제2 교수연구동"></option>
+      <option value="419 - 금정회관"></option>
+      <option value="420 - 새벽벌도서관"></option>
+      <option value="421 - 사회관"></option>
+      <option value="422 - 성학관"></option>
+      <option value="501 - 첨단과학관"></option>
+      <option value="503 - 약학관"></option>
+      <option value="506 - 효원산학협동관"></option>
+      <option value="507 - 인덕관"></option>
+      <option value="508 - 산학협동관"></option>
+      <option value="509 - 박물관 별관"></option>
+      <option value="510 - 중앙도서관"></option>
+      <option value="511 - 간이체육관"></option>
+      <option value="512 - 테니스장"></option>
+      <option value="513 - 철골주차장"></option>
+      <option value="514 - 경영관"></option>
+      <option value="515 - 중앙도서관 및 정보화본부"></option>
+      <option value="516 - 경제통상관"></option>
+      <option value="601 - 예술관"></option>
+      <option value="602 - 생활과학관 강의동"></option>
+      <option value="603 - 생활과학관 연구동"></option>
+      <option value="605 - 학군단"></option>
+      <option value="606 - 화학관"></option>
+      <option value="607 - 공동연구소동"></option>
+      <option value="608 - 제2 법학관"></option>
+      <option value="609 - 법학관"></option>
+      <option value="701 - 제2 사범관"></option>
+      <option value="702 - 조소실"></option>
+      <option value="703 - 미술관"></option>
+      <option value="704 - 조형관"></option>
+      <option value="705 - 경암체육관 교수연구동"></option>
+      <option value="706 - 경암체육관"></option>
+      <option value="707 - 음악관"></option>
+      <option value="708 - 학생회관"></option>
+      <option value="709 - 과학기술연구동"></option>
+      <option value="710 - 대운동장"></option>
+      <option value="711 - 효원재"></option>
+      <option value="712 - 웅비관 A동"></option>
+      <option value="713 - 웅비관 B동"></option>
+      <option value="714 - 진리관 관리동"></option>
+      <option value="715 - 진리관 가동"></option>
+      <option value="716 - 진리관 나동"></option>
+      <option value="717 - 진리관 다동"></option>
+      <option value="K05 - 변전실"></option>
+      <option value="K08 - 공대제2별관"></option>
+    </datalist>
+
+    <script>
+      function validateInput(input) {
+        var datalist = document.getElementById(input.getAttribute("list"));
+        var options = datalist.options;
+        var value = input.value;
+        var found = false;
+        var errorMessage = document.getElementById("error-message");
+
+        for (var i = 0; i < options.length; i++) {
+          if (value === options[i].value) {
+            found = true;
+            break;
+          }
+        }
+
+        if (!found && value) {
+          // 값이 목록에 없고, 입력값이 빈 문자열이 아닐 경우
+          errorMessage.textContent = "Please select a value from the list.";
+        } else {
+          errorMessage.textContent = ""; // 메시지 지우기
+        }
+      }
+    </script>
+      <div id="map" style="width: 900px; height: 700px" margin-left></div>
+    </section>
+
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f0e2fd01f44f692720699ade267c31f"
+    ></script>
+    <script src="mappage.js"></script>
+    <script src="timetable.js"></script>
+  </body>
+</html>
